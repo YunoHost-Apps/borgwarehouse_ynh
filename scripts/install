@@ -52,7 +52,7 @@ ynh_add_config --template="../conf/cron" --destination="/etc/cron.d/$app"
 chown root: "/etc/cron.d/$app"
 chmod 644 "/etc/cron.d/$app"
 
-yunohost service add $app --description="A short description of the app" --log="/var/log/$app/$app.log"
+yunohost service add $app --description="WebUI for BorgBackup" --log="/var/log/$app/$app.log"
 
 #=================================================
 # APP INITIAL CONFIGURATION
