@@ -13,6 +13,14 @@ secret=$(ynh_string_random --length=32)
 cron_key=$(ynh_string_random --length=32)
 
 #=================================================
+# STORE SETTINGS FROM MANIFEST
+#=================================================
+ynh_script_progression --message="Storing installation settings..." --weight=1
+
+ynh_app_setting_set --app=$app --key=secret --value=$secret
+ynh_app_setting_set --app=$app --key=cron_key --value=$cron_key
+
+#=================================================
 # INSTALL DEPENDENCIES
 #=================================================
 ynh_script_progression --message="Installing dependencies..." --weight=7
