@@ -16,8 +16,7 @@ Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) po
 
 ## Vue d’ensemble
 
-Ceci est une fausse description des fonctionalités de l'app
-
+BorgWarhouse est une interface Web rapide et moderne pour BorgBackup.
 
 **Version incluse :** 2.0.0~ynh1
 

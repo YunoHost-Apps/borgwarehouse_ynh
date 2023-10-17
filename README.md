@@ -16,7 +16,7 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 
 ## Overview
 
-This is a dummy description of this app features
+BorgWarhouse is a fast and modern WebUI for a BorgBackup's central repository server. 
 
 
 **Shipped version:** 2.0.0~ynh1
