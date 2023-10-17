@@ -28,12 +28,11 @@ ynh_exec_warn_less ynh_install_nodejs --nodejs_version=$nodejs_version
 ynh_script_progression --message="Setting up source files..." --weight=1
 
 # Download, check integrity, uncompress and patch the source from manifest.toml
-ynh_setup_source --dest_dir="$install_dir"
+ynh_setup_source --dest_dir="$install_dir/app"
 
 mkdir $install_dir/.ssh && chmod 700 $install_dir/.ssh
 touch $install_dir/.ssh/authorized_keys && chmod 600 $install_dir/.ssh/authorized_keys
 mkdir $install_dir/repos && chmod 700 $install_dir/repos
-mkdir $install_dir/app
 
 chown -R $app:www-data "$install_dir"
 
@@ -71,7 +70,7 @@ chown $app:$app "$install_dir/.env.local"
 #=================================================
 ynh_script_progression --message="Installing $app..." --weight=10
 
-pushd $install_dir/app
+pushd $install_dir/app/
  	ynh_use_nodejs
 	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH $ynh_npm ci
 	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH NODE_ENV=production $ynh_npm run build
