@@ -27,7 +27,7 @@ ldap = false
 sso = false
 
 disk = "50M"
-ram.build = "50M"
+ram.build = "700M"
 ram.runtime = "50M"
 
 [install]
@@ -45,7 +45,6 @@ ram.runtime = "50M"
         [resources.sources.main]
         url = "https://github.com/Ravinou/borgwarehouse/archive/refs/tags/v2.0.0.tar.gz"
         sha256 = "73e5bed688e58a29485d1c1fd5834c83eed1fba0bb52289f6d6f1ea4e2284180"
-
         autoupdate.strategy = "latest_github_tag"
 
     [resources.system_user]
