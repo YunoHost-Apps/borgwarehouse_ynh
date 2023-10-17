@@ -70,7 +70,7 @@ chown $app:$app "$install_dir/app/.env.local"
 #=================================================
 ynh_script_progression --message="Installing $app..." --weight=10
 
-pushd $install_dir/app/
+pushd $install_dir/app
  	ynh_use_nodejs
 	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH $ynh_npm ci
 	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH NODE_ENV=production $ynh_npm run build
