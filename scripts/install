@@ -35,6 +35,7 @@ touch $install_dir/.ssh/authorized_keys && chmod 600 $install_dir/.ssh/authorize
 mkdir $install_dir/repos && chmod 700 $install_dir/repos
 
 chown -R $app:www-data "$install_dir"
+chmod 700 $install_dir/app/helpers/shells/*
 
 #=================================================
 # SYSTEM CONFIGURATION
