@@ -1,0 +1,16 @@
+[Unit]
+Description=BorgWarehouse
+Documentation=https://borgwarehouse.com
+After=network.target
+
+[Service]
+Type=simple
+User=__APP__
+Group=__APP__
+WorkingDirectory=__INSTALL_DIR__/
+Environment=PORT=__PORT__
+ExecStart=__YNH_NPM__ run start
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
