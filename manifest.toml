@@ -51,7 +51,7 @@ ram.runtime = "50M"
     allow_email = true
 
     [resources.install_dir]
-    dir = "/home/borgwarehouse/"
+    dir = "/home/borgwarehouse"
 
     [resources.permissions]
     main.url = "/"
