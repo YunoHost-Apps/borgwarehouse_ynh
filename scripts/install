@@ -38,13 +38,13 @@ ynh_script_progression --message="Setting up source files..." --weight=1
 # Download, check integrity, uncompress and patch the source from manifest.toml
 ynh_setup_source --dest_dir="$install_dir/app"
 
-mkdir /home/borgwarehouse
-mkdir /home/borgwarehouse/.ssh && chmod 700 /home/borgwarehouse/.ssh
-touch /home/borgwarehouse/.ssh/authorized_keys && chmod 600 /home/borgwarehouse/.ssh/authorized_keys
+mkdir /home/$app
+mkdir /home/$app/.ssh && chmod 700 /home/$app/.ssh
+touch /home/$app/.ssh/authorized_keys && chmod 600 /home/$app/.ssh/authorized_keys
 mkdir $install_dir/repos && chmod 700 $install_dir/repos
 
 chown -R $app:www-data "$install_dir"
-chown -R $app:www-data "/home/borgwarehouse"
+chown -R $app:www-data "/home/$app"
 chmod 700 $install_dir/app/helpers/shells/*
 
 #=================================================
