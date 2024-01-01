@@ -18,7 +18,7 @@ Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) po
 
 BorgWarhouse est une interface Web rapide et moderne pour BorgBackup.
 
-**Version incluse :** 2.0.0~ynh1
+**Version incluse :** 2.1.0~ynh1
 
 ## Captures d’écran
 
@@ -29,6 +29,7 @@ BorgWarhouse est une interface Web rapide et moderne pour BorgBackup.
 * Site officiel de l’app : <https://borgwarehouse.com/>
 * Documentation officielle de l’admin : <https://borgwarehouse.com/docs/admin-manual/debian-installation/>
 * Dépôt de code officiel de l’app : <https://github.com/ravinou/borgwarehouse>
+* YunoHost Store: <https://apps.yunohost.org/app/borgwarehouse>
 * Signaler un bug : <https://github.com/YunoHost-Apps/borgwarehouse_ynh/issues>
 
 ## Informations pour les développeurs
