@@ -38,11 +38,13 @@ ynh_script_progression --message="Setting up source files..." --weight=1
 # Download, check integrity, uncompress and patch the source from manifest.toml
 ynh_setup_source --dest_dir="$install_dir/app"
 
-mkdir $install_dir/.ssh && chmod 700 $install_dir/.ssh
-touch $install_dir/.ssh/authorized_keys && chmod 600 $install_dir/.ssh/authorized_keys
+mkdir /home/$app
+mkdir /home/$app/.ssh && chmod 700 /home/$app/.ssh
+touch /home/$app/.ssh/authorized_keys && chmod 600 /home/$app/.ssh/authorized_keys
 mkdir $install_dir/repos && chmod 700 $install_dir/repos
 
 chown -R $app:www-data "$install_dir"
+chown -R $app:www-data "/home/$app"
 chmod 700 $install_dir/app/helpers/shells/*
 
 #=================================================
@@ -55,7 +57,7 @@ ynh_add_nginx_config
 env_path="$PATH"
 ynh_add_systemd_config
 
-ynh_add_config --template="../conf/cron" --destination="/etc/cron.d/$app"
+ynh_add_config --template="cron" --destination="/etc/cron.d/$app"
 chown root: "/etc/cron.d/$app"
 chmod 644 "/etc/cron.d/$app"
 
