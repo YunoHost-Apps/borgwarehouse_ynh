@@ -38,14 +38,18 @@ ynh_script_progression --message="Setting up source files..." --weight=1
 # Download, check integrity, uncompress and patch the source from manifest.toml
 ynh_setup_source --dest_dir="$install_dir/app"
 
-mkdir -p "/home/$app/.ssh" && chmod 700 "/home/$app/.ssh"
+mkdir "/home/$app" && chmod 700 "/home/$app"
+ln -s "$install_dir/app" "/home/$app/app"
+chmod 700 "/home/$app/app/helpers/shells/*"
+
+mkdir "/home/$app/.ssh" && chmod 700 "/home/$app/.ssh"
 touch "/home/$app/.ssh/authorized_keys" && chmod 600 "/home/$app/.ssh/authorized_keys"
+
 mkdir "/home/yunohost.app/$app" && chmod 700 "/home/yunohost.app/$app"
 ln -s "/home/yunohost.app/$app" "/home/$app/repos" && chmod 700 "/home/$app/repos"
 
 chown -R $app:www-data "$install_dir"
 chown -R $app:www-data "/home/$app"
-chmod 700 $install_dir/app/helpers/shells/*
 
 #=================================================
 # SYSTEM CONFIGURATION
