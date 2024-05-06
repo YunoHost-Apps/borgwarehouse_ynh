@@ -19,18 +19,13 @@ ynh_print_info --message="Declaring files to be backed up..."
 # BACKUP THE APP MAIN DIR
 #=================================================
 
-ynh_backup --src_path="$install_dir"
-
-unlink "/home/$app/app"
-unlink "/home/$app/repos"
-
-ynh_backup --src_path="/home/$app"
+ynh_backup --src_path="/home/yunohost.app/$app/app"
 
 #=================================================
 # BACKUP THE REPOS DIRECTORY
 #=================================================
 
-ynh_backup --src_path="/home/yunohost.app/$app" --is_big
+ynh_backup --src_path="/home/yunohost.app/$app/repos" --is_big
 
 #=================================================
 # BACKUP THE NGINX CONFIGURATION

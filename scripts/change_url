@@ -30,10 +30,10 @@ ynh_change_url_nginx_config
 #=================================================
 ynh_script_progression --message="Adding a configuration file..." --weight=1
 
-ynh_add_config --template=".env" --destination="$install_dir/app/.env.local"
+ynh_add_config --template=".env" --destination="/home/yunohost.app/$app/app/.env.local"
 
-chmod 400 "$install_dir/app/.env.local"
-chown $app:$app "$install_dir/app/.env.local"
+chmod 400 "/home/yunohost.app/$app/app/.env.local"
+chown $app:$app "/home/yunohost.app/$app/app/.env.local"
 
 #=================================================
 # GENERIC FINALISATION

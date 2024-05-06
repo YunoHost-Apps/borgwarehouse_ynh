@@ -15,17 +15,17 @@ source /usr/share/yunohost/helpers
 #=================================================
 ynh_script_progression --message="Restoring the app main directory..." --weight=1
 
-ynh_restore_file --origin_path="$install_dir"
+mkdir -p "/home/yunohost.app/$app" && chmod 700 "/home/yunohost.app/$app"
 
-chown -R $app:www-data "$install_dir"
+ynh_restore_file --origin_path="/home/yunohost.app/$app/app"
 
-ynh_restore_file --origin_path="/home/$app"
-ynh_restore_file --origin_path="/home/yunohost.app/$app" --not_mandatory
+chown -R $app:www-data "/home/yunohost.app/$app/app"
 
-chown -R $app:www-data "/home/$app"
-chown -R $app:www-data "/home/yunohost.app/$app"
-ln -s "/home/yunohost.app/$app" "/home/$app/repos" && chmod 700 "/home/$app/repos"
-ln -s "$install_dir/app" "/home/$app/app" && chmod 700 "/home/$app/app"
+ynh_restore_file --origin_path="/home/yunohost.app/$app/repos" --not_mandatory
+
+chown -R $app:www-data "/home/yunohost.app/$app/repos"
+
+chmod 700 "/home/yunohost.app/$app"
 
 #=================================================
 # REINSTALL DEPENDENCIES
