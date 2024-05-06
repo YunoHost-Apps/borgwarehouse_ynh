@@ -71,7 +71,7 @@ yunohost service add $app --description="WebUI for BorgBackup" --log="/var/log/$
 #=================================================
 ynh_script_progression --message="Adding a configuration file..." --weight=1
 
-ynh_add_config --template=".env" --destination="home/yunohost.app/$app/app/.env.local"
+ynh_add_config --template=".env" --destination="/home/yunohost.app/$app/app/.env.local"
 
 chmod 400 "/home/yunohost.app/$app/app/.env.local"
 chown $app:$app "/home/yunohost.app/$app/app/.env.local"
