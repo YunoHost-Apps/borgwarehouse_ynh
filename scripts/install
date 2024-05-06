@@ -49,6 +49,8 @@ chown -R $app:www-data "/home/yunohost.app/$app"
 
 chmod 700 "/home/yunohost.app/$app/app/helpers/shells/"*
 
+mkdir "/home/yunohost.app/$app/repos" && chmod 700 "/home/yunohost.app/$app/repos"
+
 #=================================================
 # SYSTEM CONFIGURATION
 #=================================================
