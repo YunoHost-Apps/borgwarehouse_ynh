@@ -49,6 +49,7 @@ ram.runtime = "50M"
 
     [resources.system_user]
     allow_email = true
+    allow_ssh = true
 
     [resources.install_dir]
 
