@@ -45,11 +45,11 @@ chmod 700 "/home/yunohost.app/$app"
 mkdir "/home/yunohost.app/$app/.ssh" && chmod 700 "/home/yunohost.app/$app/.ssh"
 touch "/home/yunohost.app/$app/.ssh/authorized_keys" && chmod 600 "/home/yunohost.app/$app/.ssh/authorized_keys"
 
-chown -R $app:www-data "/home/yunohost.app/$app"
-
 chmod 700 "/home/yunohost.app/$app/app/helpers/shells/"*
 
 mkdir "/home/yunohost.app/$app/repos" && chmod 700 "/home/yunohost.app/$app/repos"
+
+chown -R $app:www-data "/home/yunohost.app/$app"
 
 #=================================================
 # SYSTEM CONFIGURATION
