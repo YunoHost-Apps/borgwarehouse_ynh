@@ -3,7 +3,7 @@
 请勿手动编辑。
 -->
 
-# YunoHost 的 BorgWarehouse
+# YunoHost 上的 BorgWarehouse
 
 [![集成程度](https://dash.yunohost.org/integration/borgwarehouse.svg)](https://dash.yunohost.org/appci/app/borgwarehouse) ![工作状态](https://ci-apps.yunohost.org/ci/badges/borgwarehouse.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/borgwarehouse.maintain.svg)
 
