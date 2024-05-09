@@ -20,6 +20,7 @@ ynh_print_info --message="Declaring files to be backed up..."
 #=================================================
 
 ynh_backup --src_path="/home/yunohost.app/$app/app"
+ynh_backup --src_path="/home/yunohost.app/$app/.ssh"
 
 #=================================================
 # BACKUP THE REPOS DIRECTORY
