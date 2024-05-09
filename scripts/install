@@ -35,15 +35,21 @@ ynh_exec_warn_less ynh_install_nodejs --nodejs_version=$nodejs_version
 #=================================================
 ynh_script_progression --message="Setting up source files..." --weight=1
 
+mkdir "/home/yunohost.app/$app" && chmod 700 "/home/yunohost.app/$app"
+
 # Download, check integrity, uncompress and patch the source from manifest.toml
-ynh_setup_source --dest_dir="$install_dir/app"
+ynh_setup_source --dest_dir="/home/yunohost.app/$app/app"
 
-mkdir $install_dir/.ssh && chmod 700 $install_dir/.ssh
-touch $install_dir/.ssh/authorized_keys && chmod 600 $install_dir/.ssh/authorized_keys
-mkdir $install_dir/repos && chmod 700 $install_dir/repos
+chmod 700 "/home/yunohost.app/$app"
 
-chown -R $app:www-data "$install_dir"
-chmod 700 $install_dir/app/helpers/shells/*
+mkdir "/home/yunohost.app/$app/.ssh" && chmod 700 "/home/yunohost.app/$app/.ssh"
+touch "/home/yunohost.app/$app/.ssh/authorized_keys" && chmod 600 "/home/yunohost.app/$app/.ssh/authorized_keys"
+
+chmod 700 "/home/yunohost.app/$app/app/helpers/shells/"*
+
+mkdir "/home/yunohost.app/$app/repos" && chmod 700 "/home/yunohost.app/$app/repos"
+
+chown -R $app:www-data "/home/yunohost.app/$app"
 
 #=================================================
 # SYSTEM CONFIGURATION
@@ -52,10 +58,9 @@ ynh_script_progression --message="Adding system configurations related to $app..
 
 ynh_add_nginx_config
 
-env_path="$PATH"
 ynh_add_systemd_config
 
-ynh_add_config --template="../conf/cron" --destination="/etc/cron.d/$app"
+ynh_add_config --template="cron" --destination="/etc/cron.d/$app"
 chown root: "/etc/cron.d/$app"
 chmod 644 "/etc/cron.d/$app"
 
@@ -68,17 +73,17 @@ yunohost service add $app --description="WebUI for BorgBackup" --log="/var/log/$
 #=================================================
 ynh_script_progression --message="Adding a configuration file..." --weight=1
 
-ynh_add_config --template=".env" --destination="$install_dir/app/.env.local"
+ynh_add_config --template=".env" --destination="/home/yunohost.app/$app/app/.env.local"
 
-chmod 400 "$install_dir/app/.env.local"
-chown $app:$app "$install_dir/app/.env.local"
+chmod 400 "/home/yunohost.app/$app/app/.env.local"
+chown $app:$app "/home/yunohost.app/$app/app/.env.local"
 
 #=================================================
 # INSTALL BORGWARHOUSE
 #=================================================
 ynh_script_progression --message="Installing $app..." --weight=10
 
-pushd $install_dir/app
+pushd /home/yunohost.app/$app/app
  	ynh_use_nodejs
 	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH $ynh_npm ci
 	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH NODE_ENV=production $ynh_npm run build
