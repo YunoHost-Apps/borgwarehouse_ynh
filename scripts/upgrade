@@ -66,6 +66,16 @@ chmod 400 "/home/yunohost.app/$app/app/.env.local"
 chown $app:$app "/home/yunohost.app/$app/app/.env.local"
 
 #=================================================
+# INSTALL BORGWARHOUSE
+#=================================================
+
+pushd /home/yunohost.app/$app/app
+ 	ynh_use_nodejs
+	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH $ynh_npm ci
+	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH NODE_ENV=production $ynh_npm run build
+popd
+
+#=================================================
 # START SYSTEMD SERVICE
 #=================================================
 ynh_script_progression --message="Starting a systemd service..." --weight=1
