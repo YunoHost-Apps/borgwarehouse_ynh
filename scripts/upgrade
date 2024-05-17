@@ -51,6 +51,11 @@ ynh_add_nginx_config
 
 ynh_add_systemd_config
 
+# Update cron in case of changes
+ynh_add_config --template="cron" --destination="/etc/cron.d/$app"
+chown root: "/etc/cron.d/$app"
+chmod 644 "/etc/cron.d/$app"
+
 yunohost service add $app --description="WebUI for BorgBackup" --log="/var/log/$app/$app.log"
 
 #=================================================
