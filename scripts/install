@@ -35,21 +35,19 @@ ynh_exec_warn_less ynh_install_nodejs --nodejs_version=$nodejs_version
 #=================================================
 ynh_script_progression --message="Setting up source files..." --weight=1
 
-mkdir "/home/yunohost.app/$app" && chmod 700 "/home/yunohost.app/$app"
-
 # Download, check integrity, uncompress and patch the source from manifest.toml
-ynh_setup_source --dest_dir="/home/yunohost.app/$app/app"
+ynh_setup_source --dest_dir="$data_dir/app"
 
-chmod 700 "/home/yunohost.app/$app"
+chmod 700 "$data_dir"
 
-mkdir "/home/yunohost.app/$app/.ssh" && chmod 700 "/home/yunohost.app/$app/.ssh"
-touch "/home/yunohost.app/$app/.ssh/authorized_keys" && chmod 600 "/home/yunohost.app/$app/.ssh/authorized_keys"
+mkdir "$data_dir/.ssh" && chmod 700 "$data_dir/.ssh"
+touch "$data_dir/.ssh/authorized_keys" && chmod 600 "$data_dir/.ssh/authorized_keys"
 
-chmod 700 "/home/yunohost.app/$app/app/helpers/shells/"*
+chmod 700 "$data_dir/app/helpers/shells/"*
 
-mkdir "/home/yunohost.app/$app/repos" && chmod 700 "/home/yunohost.app/$app/repos"
+mkdir "$data_dir/repos" && chmod 700 "$data_dir/repos"
 
-chown -R $app:www-data "/home/yunohost.app/$app"
+chown -R $app:www-data "$data_dir"
 
 #=================================================
 # SYSTEM CONFIGURATION
@@ -73,10 +71,10 @@ yunohost service add $app --description="WebUI for BorgBackup" --log="/var/log/$
 #=================================================
 ynh_script_progression --message="Adding a configuration file..." --weight=1
 
-ynh_add_config --template=".env" --destination="/home/yunohost.app/$app/app/.env.local"
+ynh_add_config --template=".env" --destination="$data_dir/app/.env.local"
 
-chmod 400 "/home/yunohost.app/$app/app/.env.local"
-chown $app:$app "/home/yunohost.app/$app/app/.env.local"
+chmod 400 "$data_dir/app/.env.local"
+chown $app:$app "$data_dir/app/.env.local"
 
 #=================================================
 # INSTALL BORGWARHOUSE

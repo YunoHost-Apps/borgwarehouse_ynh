@@ -16,17 +16,10 @@ source /usr/share/yunohost/helpers
 ynh_print_info --message="Declaring files to be backed up..."
 
 #=================================================
-# BACKUP THE APP MAIN DIR
-#=================================================
-
-ynh_backup --src_path="/home/yunohost.app/$app/app"
-ynh_backup --src_path="/home/yunohost.app/$app/.ssh"
-
-#=================================================
 # BACKUP THE REPOS DIRECTORY
 #=================================================
 
-ynh_backup --src_path="/home/yunohost.app/$app/repos" --is_big
+ynh_backup --src_path="$data_dir" --is_big
 
 #=================================================
 # BACKUP THE NGINX CONFIGURATION
@@ -34,15 +27,7 @@ ynh_backup --src_path="/home/yunohost.app/$app/repos" --is_big
 
 ynh_backup --src_path="/etc/nginx/conf.d/$domain.d/$app.conf"
 
-#=================================================
-# BACKUP SYSTEMD
-#=================================================
-
 ynh_backup --src_path="/etc/systemd/system/$app.service"
-
-#=================================================
-# BACKUP VARIOUS FILES
-#=================================================
 
 ynh_backup --src_path="/etc/cron.d/$app"
 
