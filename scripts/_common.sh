@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #=================================================
-# COMMON VARIABLES
+# COMMON VARIABLES AND CUSTOM HELPERS
 #=================================================
 
 nodejs_version=20
@@ -11,15 +11,3 @@ main_domain=$(cat /etc/yunohost/current_host)
 rsa_key=$(ssh-keygen -lf /etc/ssh/ssh_host_rsa_key | awk '{print $2}')
 ed25519_key=$(ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key | awk '{print $2}')
 ecdsa_key=$(ssh-keygen -lf /etc/ssh/ssh_host_ecdsa_key | awk '{print $2}')
-
-#=================================================
-# PERSONAL HELPERS
-#=================================================
-
-#=================================================
-# EXPERIMENTAL HELPERS
-#=================================================
-
-#=================================================
-# FUTURE OFFICIAL HELPERS
-#=================================================
