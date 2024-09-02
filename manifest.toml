@@ -65,4 +65,4 @@ ram.runtime = "50M"
     [resources.ports]
 
     [resources.apt]
-    packages = "jc, jq, borgbackup"
+    packages = "jc, jq, borgbackup, apprise"
