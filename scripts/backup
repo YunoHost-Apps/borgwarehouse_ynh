@@ -25,15 +25,7 @@ ynh_backup "/home/yunohost.app/$app/repos"
 
 ynh_backup "/etc/nginx/conf.d/$domain.d/$app.conf"
 
-#=================================================
-# BACKUP SYSTEMD
-#=================================================
-
 ynh_backup "/etc/systemd/system/$app.service"
-
-#=================================================
-# BACKUP VARIOUS FILES
-#=================================================
 
 ynh_backup "/etc/cron.d/$app"
 
