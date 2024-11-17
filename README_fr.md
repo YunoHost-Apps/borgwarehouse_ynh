@@ -5,7 +5,7 @@ Il NE doit PAS être modifié à la main.
 
 # BorgWarehouse pour YunoHost
 
-[![Niveau d’intégration](https://dash.yunohost.org/integration/borgwarehouse.svg)](https://dash.yunohost.org/appci/app/borgwarehouse) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/borgwarehouse.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/borgwarehouse.maintain.svg)
+[![Niveau d’intégration](https://dash.yunohost.org/integration/borgwarehouse.svg)](https://ci-apps.yunohost.org/ci/apps/borgwarehouse/) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/borgwarehouse.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/borgwarehouse.maintain.svg)
 
 [![Installer BorgWarehouse avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=borgwarehouse)
 
@@ -18,7 +18,7 @@ Il NE doit PAS être modifié à la main.
 
 BorgWarhouse est une interface Web rapide et moderne pour BorgBackup.
 
-**Version incluse :** 2.3.0~ynh2
+**Version incluse :** 2.4.1~ynh1
 
 ## Captures d’écran
 
