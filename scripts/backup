@@ -9,14 +9,7 @@ ynh_print_info "Declaring files to be backed up..."
 # BACKUP THE APP MAIN DIR
 #=================================================
 
-ynh_backup "/home/yunohost.app/$app/app"
-ynh_backup "/home/yunohost.app/$app/.ssh"
-
-#=================================================
-# BACKUP THE REPOS DIRECTORY
-#=================================================
-
-ynh_backup "/home/yunohost.app/$app/repos"
+ynh_backup "$data_dir"
 
 #=================================================
 # BACKUP THE NGINX CONFIGURATION

@@ -20,8 +20,6 @@ ynh_nodejs_remove
 
 ynh_safe_rm "/etc/cron.d/$app"
 
-ynh_safe_rm "/home/yunohost.app/$app"
-
 #=================================================
 # END OF SCRIPT
 #=================================================

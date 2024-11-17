@@ -4,21 +4,11 @@ source ../settings/scripts/_common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# RESTORE THE APP MAIN DIR
+# RESTORE THE DATA DIRECTORY
 #=================================================
-ynh_script_progression "Restoring the app main directory..."
+ynh_script_progression "Restoring the data directory..."
 
-mkdir -p "/home/yunohost.app/$app" && chmod 700 "/home/yunohost.app/$app"
-
-ynh_restore "/home/yunohost.app/$app/app"
-ynh_restore "/home/yunohost.app/$app/.ssh"
-
-ynh_restore "/home/yunohost.app/$app/repos" || true
-
-chmod -R 700 "/home/yunohost.app/$app"
-chmod 600 "/home/yunohost.app/$app/.ssh/authorized_keys"
-
-chown -R $app:www-data "/home/yunohost.app/$app"
+ynh_restore "$data_dir"
 
 #=================================================
 # REINSTALL DEPENDENCIES

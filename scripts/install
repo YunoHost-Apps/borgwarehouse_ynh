@@ -26,21 +26,19 @@ ynh_nodejs_install
 #=================================================
 ynh_script_progression "Setting up source files..."
 
-mkdir "/home/yunohost.app/$app" && chmod 700 "/home/yunohost.app/$app"
-
 # Download, check integrity, uncompress and patch the source from manifest.toml
-ynh_setup_source --dest_dir="/home/yunohost.app/$app/app"
+ynh_setup_source --dest_dir="$data_dir/app"
 
-chmod 700 "/home/yunohost.app/$app"
+chmod 700 "$data_dir"
 
-mkdir "/home/yunohost.app/$app/.ssh" && chmod 700 "/home/yunohost.app/$app/.ssh"
-touch "/home/yunohost.app/$app/.ssh/authorized_keys" && chmod 600 "/home/yunohost.app/$app/.ssh/authorized_keys"
+mkdir "$data_dir/.ssh" && chmod 700 "$data_dir/.ssh"
+touch "$data_dir/.ssh/authorized_keys" && chmod 600 "$data_dir/.ssh/authorized_keys"
 
-chmod 700 "/home/yunohost.app/$app/app/helpers/shells/"*
+chmod 700 "$data_dir/app/helpers/shells/"*
 
-mkdir "/home/yunohost.app/$app/repos" && chmod 700 "/home/yunohost.app/$app/repos"
+mkdir "$data_dir/repos" && chmod 700 "$data_dir/repos"
 
-chown -R $app:www-data "/home/yunohost.app/$app"
+chown -R $app:www-data "$data_dir"
 
 #=================================================
 # SYSTEM CONFIGURATION
@@ -62,17 +60,17 @@ yunohost service add $app --description="WebUI for BorgBackup" --log="/var/log/$
 #=================================================
 ynh_script_progression "Adding $app's configuration..."
 
-ynh_config_add --template=".env" --destination="/home/yunohost.app/$app/app/.env.local"
+ynh_add_config --template=".env" --destination="$data_dir/app/.env.local"
 
-chmod 400 "/home/yunohost.app/$app/app/.env.local"
-chown $app:$app "/home/yunohost.app/$app/app/.env.local"
+chmod 400 "$data_dir/app/.env.local"
+chown $app:$app "$data_dir/app/.env.local"
 
 #=================================================
 # INSTALL BORGWARHOUSE
 #=================================================
 ynh_script_progression "Installing $app..."
 
-pushd /home/yunohost.app/$app/app
+pushd $data_dir/app
 	ynh_hide_warnings ynh_exec_as_app npm ci
 	ynh_hide_warnings ynh_exec_as_app NODE_ENV=production npm run build
 popd
@@ -82,7 +80,6 @@ popd
 #=================================================
 ynh_script_progression "Starting $app's systemd service..."
 
-# Start a systemd service
 ynh_systemctl --service=$app --action="start" --log_path="systemd"
 
 #=================================================

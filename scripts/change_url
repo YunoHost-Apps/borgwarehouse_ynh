@@ -22,10 +22,10 @@ ynh_config_change_url_nginx
 #=================================================
 ynh_script_progression "Adding $app's configuration..."
 
-ynh_config_add --template=".env" --destination="/home/yunohost.app/$app/app/.env.local"
+ynh_add_config --template=".env" --destination="$data_dir/app/.env.local"
 
-chmod 400 "/home/yunohost.app/$app/app/.env.local"
-chown $app:$app "/home/yunohost.app/$app/app/.env.local"
+chmod 400 "$data_dir/app/.env.local"
+chown $app:$app "$data_dir/app/.env.local"
 
 #=================================================
 # START SYSTEMD SERVICE

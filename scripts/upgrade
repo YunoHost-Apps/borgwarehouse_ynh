@@ -22,9 +22,9 @@ ynh_systemctl --service=$app --action="stop" --log_path="systemd"
 #=================================================
 ynh_script_progression "Upgrading source files..."
 
-ynh_setup_source --dest_dir="/home/yunohost.app/$app/app" --keep="app/.env.local app/config/users.json app/config/repo.json"
+ynh_setup_source --dest_dir="$data_dir/app" --keep="app/.env.local app/config/users.json app/config/repo.json"
 
-chown -R $app:www-data "/home/yunohost.app/$app/app"
+chown -R $app:www-data "$data_dir/app"
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
@@ -44,16 +44,16 @@ yunohost service add $app --description="WebUI for BorgBackup" --log="/var/log/$
 #=================================================
 ynh_script_progression "Updating configuration..."
 
-ynh_config_add --template=".env" --destination="/home/yunohost.app/$app/app/.env.local"
+ynh_add_config --template=".env" --destination="$data_dir/app/.env.local"
 
-chmod 400 "/home/yunohost.app/$app/app/.env.local"
-chown $app:$app "/home/yunohost.app/$app/app/.env.local"
+chmod 400 "$data_dir/app/.env.local"
+chown $app:$app "$data_dir/app/.env.local"
 
 #=================================================
 # INSTALL BORGWARHOUSE
 #=================================================
 
-pushd /home/yunohost.app/$app/app
+pushd $data_dir/app
 	ynh_hide_warnings ynh_exec_as_app npm ci
 	ynh_hide_warnings ynh_exec_as_app NODE_ENV=production npm run build
 popd
