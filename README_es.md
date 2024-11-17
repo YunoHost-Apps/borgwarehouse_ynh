@@ -35,7 +35,7 @@ BorgWarhouse is a fast and modern WebUI for a BorgBackup's central repository se
 
 ## Información para desarrolladores
 
-Por favor enviar sus correcciones a la [`branch testing`](https://github.com/YunoHost-Apps/borgwarehouse_ynh/tree/testing
+Por favor enviar sus correcciones a la [rama `testing`](https://github.com/YunoHost-Apps/borgwarehouse_ynh/tree/testing).
 
 Para probar la rama `testing`, sigue asÍ:
 
