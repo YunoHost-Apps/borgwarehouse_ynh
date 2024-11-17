@@ -4,7 +4,7 @@ packaging_format = 2
 
 id = "borgwarehouse"
 name = "BorgWarehouse"
-description.en = "WebUI for a BorgBackup's central repository server"
+description.en = "WebUI for BorgBackup"
 description.fr = "WebUI pour BorgBackup"
 
 version = "2.4.1~ynh1"
@@ -23,7 +23,6 @@ architectures = "all"
 multi_instance = true
 
 ldap = false
-
 sso = false
 
 disk = "50M"
