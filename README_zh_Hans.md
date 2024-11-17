@@ -5,7 +5,7 @@
 
 # YunoHost 上的 BorgWarehouse
 
-[![集成程度](https://dash.yunohost.org/integration/borgwarehouse.svg)](https://dash.yunohost.org/appci/app/borgwarehouse) ![工作状态](https://ci-apps.yunohost.org/ci/badges/borgwarehouse.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/borgwarehouse.maintain.svg)
+[![集成程度](https://dash.yunohost.org/integration/borgwarehouse.svg)](https://ci-apps.yunohost.org/ci/apps/borgwarehouse/) ![工作状态](https://ci-apps.yunohost.org/ci/badges/borgwarehouse.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/borgwarehouse.maintain.svg)
 
 [![使用 YunoHost 安装 BorgWarehouse](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=borgwarehouse)
 
@@ -19,7 +19,7 @@
 BorgWarhouse is a fast and modern WebUI for a BorgBackup's central repository server. 
 
 
-**分发版本：** 2.3.0~ynh3
+**分发版本：** 2.4.1~ynh1
 
 ## 截图
 
