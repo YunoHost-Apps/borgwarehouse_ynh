@@ -19,11 +19,8 @@ ynh_app_setting_set --key=cron_key --value=$cron_key
 #=================================================
 ynh_script_progression "Installing dependencies..."
 
-# Install Nodejs
 ynh_nodejs_install
 
-#=================================================
-# APP "BUILD" (DEPLOYING SOURCES, VENV, COMPILING ETC)
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
@@ -76,7 +73,6 @@ chown $app:$app "/home/yunohost.app/$app/app/.env.local"
 ynh_script_progression "Installing $app..."
 
 pushd /home/yunohost.app/$app/app
-
 	ynh_hide_warnings ynh_exec_as_app npm ci
 	ynh_hide_warnings ynh_exec_as_app NODE_ENV=production npm run build
 popd

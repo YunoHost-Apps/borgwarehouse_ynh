@@ -8,7 +8,6 @@ source /usr/share/yunohost/helpers
 #=================================================
 ynh_script_progression "Upgrading dependencies..."
 
-# Install Nodejs
 ynh_nodejs_install
 
 #=================================================
@@ -19,13 +18,10 @@ ynh_script_progression "Stopping $app's systemd service..."
 ynh_systemctl --service=$app --action="stop" --log_path="systemd"
 
 #=================================================
-# "REBUILD" THE APP (DEPLOY NEW SOURCES, RERUN NPM BUILD...)
-#=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression "Upgrading source files..."
 
-# Download, check integrity, uncompress and patch the source from manifest.toml
 ynh_setup_source --dest_dir="/home/yunohost.app/$app/app" --keep="app/.env.local app/config/users.json app/config/repo.json"
 
 chown -R $app:www-data "/home/yunohost.app/$app/app"
@@ -39,13 +35,10 @@ ynh_config_add_nginx
 
 ynh_config_add_systemd
 
-# Update cron in case of changes
 ynh_config_add --template="cron" --destination="/etc/cron.d/$app"
 
 yunohost service add $app --description="WebUI for BorgBackup" --log="/var/log/$app/$app.log"
 
-#=================================================
-# RECONFIGURE THE APP (UPDATE CONF, APPLY MIGRATIONS...)
 #=================================================
 # UPDATE A CONFIG FILE
 #=================================================
@@ -61,7 +54,6 @@ chown $app:$app "/home/yunohost.app/$app/app/.env.local"
 #=================================================
 
 pushd /home/yunohost.app/$app/app
-
 	ynh_hide_warnings ynh_exec_as_app npm ci
 	ynh_hide_warnings ynh_exec_as_app NODE_ENV=production npm run build
 popd
