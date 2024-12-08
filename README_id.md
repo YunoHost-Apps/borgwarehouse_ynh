@@ -5,7 +5,9 @@ Ini TIDAK boleh diedit dengan tangan.
 
 # BorgWarehouse untuk YunoHost
 
-[![Tingkat integrasi](https://dash.yunohost.org/integration/borgwarehouse.svg)](https://ci-apps.yunohost.org/ci/apps/borgwarehouse/) ![Status kerja](https://ci-apps.yunohost.org/ci/badges/borgwarehouse.status.svg) ![Status pemeliharaan](https://ci-apps.yunohost.org/ci/badges/borgwarehouse.maintain.svg)
+[![Tingkat integrasi](https://apps.yunohost.org/badge/integration/borgwarehouse)](https://ci-apps.yunohost.org/ci/apps/borgwarehouse/)
+![Status kerja](https://apps.yunohost.org/badge/state/borgwarehouse)
+![Status pemeliharaan](https://apps.yunohost.org/badge/maintained/borgwarehouse)
 
 [![Pasang BorgWarehouse dengan YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=borgwarehouse)
 
@@ -19,7 +21,7 @@ Ini TIDAK boleh diedit dengan tangan.
 BorgWarhouse is a fast and modern WebUI for a BorgBackup's central repository server. 
 
 
-**Versi terkirim:** 2.4.1~ynh1
+**Versi terkirim:** 2.4.2~ynh1
 
 ## Tangkapan Layar
 
