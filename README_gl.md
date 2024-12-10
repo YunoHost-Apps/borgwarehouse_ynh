@@ -5,7 +5,9 @@ NON debe editarse manualmente.
 
 # BorgWarehouse para YunoHost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/borgwarehouse.svg)](https://dash.yunohost.org/appci/app/borgwarehouse) ![Estado de funcionamento](https://ci-apps.yunohost.org/ci/badges/borgwarehouse.status.svg) ![Estado de mantemento](https://ci-apps.yunohost.org/ci/badges/borgwarehouse.maintain.svg)
+[![Nivel de integración](https://apps.yunohost.org/badge/integration/borgwarehouse)](https://ci-apps.yunohost.org/ci/apps/borgwarehouse/)
+![Estado de funcionamento](https://apps.yunohost.org/badge/state/borgwarehouse)
+![Estado de mantemento](https://apps.yunohost.org/badge/maintained/borgwarehouse)
 
 [![Instalar BorgWarehouse con YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=borgwarehouse)
 
@@ -19,7 +21,7 @@ NON debe editarse manualmente.
 BorgWarhouse is a fast and modern WebUI for a BorgBackup's central repository server. 
 
 
-**Versión proporcionada:** 2.3.0~ynh3
+**Versión proporcionada:** 2.4.2~ynh1
 
 ## Capturas de pantalla
 

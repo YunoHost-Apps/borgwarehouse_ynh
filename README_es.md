@@ -5,7 +5,9 @@ No se debe editar a mano.
 
 # BorgWarehouse para Yunohost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/borgwarehouse.svg)](https://dash.yunohost.org/appci/app/borgwarehouse) ![Estado funcional](https://ci-apps.yunohost.org/ci/badges/borgwarehouse.status.svg) ![Estado En Mantención](https://ci-apps.yunohost.org/ci/badges/borgwarehouse.maintain.svg)
+[![Nivel de integración](https://apps.yunohost.org/badge/integration/borgwarehouse)](https://ci-apps.yunohost.org/ci/apps/borgwarehouse/)
+![Estado funcional](https://apps.yunohost.org/badge/state/borgwarehouse)
+![Estado En Mantención](https://apps.yunohost.org/badge/maintained/borgwarehouse)
 
 [![Instalar BorgWarehouse con Yunhost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=borgwarehouse)
 
@@ -19,7 +21,7 @@ No se debe editar a mano.
 BorgWarhouse is a fast and modern WebUI for a BorgBackup's central repository server. 
 
 
-**Versión actual:** 2.3.0~ynh3
+**Versión actual:** 2.4.2~ynh1
 
 ## Capturas
 
@@ -35,7 +37,7 @@ BorgWarhouse is a fast and modern WebUI for a BorgBackup's central repository se
 
 ## Información para desarrolladores
 
-Por favor enviar sus correcciones a la [`branch testing`](https://github.com/YunoHost-Apps/borgwarehouse_ynh/tree/testing
+Por favor enviar sus correcciones a la [rama `testing`](https://github.com/YunoHost-Apps/borgwarehouse_ynh/tree/testing).
 
 Para probar la rama `testing`, sigue asÍ:
 

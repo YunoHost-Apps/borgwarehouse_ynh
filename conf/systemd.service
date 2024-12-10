@@ -7,10 +7,10 @@ After=network.target
 Type=simple
 User=__APP__
 Group=__APP__
-Environment="__YNH_NODE_LOAD_PATH__"
-WorkingDirectory=/home/yunohost.app/__APP__/app
+Environment="PATH=__PATH_WITH_NODEJS__"
+WorkingDirectory=__DATA_DIR__/app
 Environment=PORT=__PORT__
-ExecStart=__YNH_NPM__ run start
+ExecStart=__NODEJS_DIR__/npm run start
 Restart=on-failure
 
 ### Depending on specificities of your service/app, you may need to tweak these

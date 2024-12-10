@@ -4,10 +4,10 @@ packaging_format = 2
 
 id = "borgwarehouse"
 name = "BorgWarehouse"
-description.en = "WebUI for a BorgBackup's central repository server"
+description.en = "WebUI for BorgBackup"
 description.fr = "WebUI pour BorgBackup"
 
-version = "2.3.0~ynh3"
+version = "2.4.2~ynh1"
 
 maintainers = []
 
@@ -18,12 +18,12 @@ admindoc = "https://borgwarehouse.com/docs/admin-manual/debian-installation/"
 code = "https://github.com/ravinou/borgwarehouse"
 
 [integration]
-yunohost = ">= 11.2"
+yunohost = ">= 11.2.30"
+helpers_version = "2.1"
 architectures = "all"
 multi_instance = true
 
 ldap = false
-
 sso = false
 
 disk = "50M"
@@ -43,8 +43,8 @@ ram.runtime = "50M"
     [resources.sources]
 
         [resources.sources.main]
-        url = "https://github.com/ravinou/borgwarehouse/archive/refs/tags/v2.3.0.tar.gz"
-        sha256 = "5b02e741ed433c78e9acc63900206c257f2fcbfa6d5810caf75acba9649d91dc"
+        url = "https://github.com/ravinou/borgwarehouse/archive/refs/tags/v2.4.2.tar.gz"
+        sha256 = "75f5506c86dd54845858a5dac9766d11b870eda14af1f7071e4fc2880d8fbb78"
         autoupdate.strategy = "latest_github_tag"
 
     [resources.system_user]
@@ -54,6 +54,8 @@ ram.runtime = "50M"
 
     [resources.install_dir]
 
+    [resources.data_dir]
+    
     [resources.permissions]
     main.url = "/"
     api.url = "/api"
@@ -65,4 +67,4 @@ ram.runtime = "50M"
     [resources.ports]
 
     [resources.apt]
-    packages = "jc, jq, borgbackup"
+    packages = "jc, jq, borgbackup, apprise"
