@@ -20,7 +20,7 @@ Il NE doit PAS être modifié à la main.
 
 BorgWarhouse est une interface Web rapide et moderne pour BorgBackup.
 
-**Version incluse :** 2.4.2~ynh1
+**Version incluse :** 2.4.3~ynh1
 
 ## Captures d’écran
 

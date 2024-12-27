@@ -21,7 +21,7 @@
 BorgWarhouse is a fast and modern WebUI for a BorgBackup's central repository server. 
 
 
-**分发版本：** 2.4.2~ynh1
+**分发版本：** 2.4.3~ynh1
 
 ## 截图
 
