@@ -7,7 +7,7 @@ name = "BorgWarehouse"
 description.en = "WebUI for BorgBackup"
 description.fr = "WebUI pour BorgBackup"
 
-version = "2.4.4~ynh1"
+version = "2.4.4~ynh2"
 
 maintainers = []
 
