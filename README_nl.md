@@ -21,7 +21,7 @@ Hij mag NIET handmatig aangepast worden.
 BorgWarhouse is a fast and modern WebUI for a BorgBackup's central repository server. 
 
 
-**Geleverde versie:** 2.4.4~ynh1
+**Geleverde versie:** 2.4.4~ynh2
 
 ## Schermafdrukken
 
