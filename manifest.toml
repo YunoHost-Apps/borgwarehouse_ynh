@@ -7,7 +7,7 @@ name = "BorgWarehouse"
 description.en = "WebUI for BorgBackup"
 description.fr = "WebUI pour BorgBackup"
 
-version = "2.4.4~ynh2"
+version = "3.0.0~ynh1"
 
 maintainers = []
 
@@ -43,8 +43,8 @@ ram.runtime = "50M"
     [resources.sources]
 
         [resources.sources.main]
-        url = "https://github.com/ravinou/borgwarehouse/archive/refs/tags/v2.4.4.tar.gz"
-        sha256 = "f6be3c77679d7ea56319f289847986fbc6a45497033909a4f55a21ed20660307"
+        url = "https://github.com/ravinou/borgwarehouse/archive/refs/tags/v3.0.0.tar.gz"
+        sha256 = "6767fa50477494b5f27625ffae7d29f4d4c75d33aab5c3f5090499b65939bdbb"
         autoupdate.strategy = "latest_github_tag"
 
     [resources.system_user]
