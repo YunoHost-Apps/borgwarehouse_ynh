@@ -4,8 +4,18 @@ test_format = 1.0
 
 [default]
 
-     # ------------
+    # ------------
     # Tests to run
     # ------------
 
     exclude = ["install.subdir"]
+
+    # -------------------------------
+    # Default args to use for install
+    # -------------------------------
+
+    # -------------------------------
+    # Commits to test upgrade from
+    # -------------------------------
+
+    # test_upgrade_from.97f20131a1a042a5d083321cd2e90eb6dd578f02.name = "Upgrade from 2.4.4~ynh2"

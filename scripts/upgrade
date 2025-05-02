@@ -1,7 +1,43 @@
 #!/bin/bash
 
+#=================================================
+# IMPORT GENERIC HELPERS
+#=================================================
+
 source _common.sh
 source /usr/share/yunohost/helpers
+
+#=================================================
+# ENSURE DOWNWARD COMPATIBILITY
+#=================================================
+ynh_script_progression "Ensuring downward compatibility..."
+
+#=================================================
+# STOP SYSTEMD SERVICE
+#=================================================
+ynh_script_progression "Stopping $app's systemd service..."
+
+ynh_systemctl --service="$app" --action="stop" --log_path="systemd"
+
+#=================================================
+# DOWNLOAD, CHECK AND UNPACK SOURCE
+#=================================================
+ynh_script_progression "Upgrading source files..."
+
+# Download, check integrity, uncompress and patch the source from manifest.toml
+ynh_setup_source --dest_dir="$data_dir/app" --keep="app/.env.local app/config/users.json app/config/repo.json"
+
+chown -R $app:www-data "$data_dir/app"
+
+#=================================================
+# UPDATE A CONFIG FILE
+#=================================================
+ynh_script_progression "Updating $app's configuration files..."
+
+ynh_config_add --template=".env" --destination="$data_dir/app/.env.local"
+
+chmod 400 "$data_dir/app/.env.local"
+chown $app:$app "$data_dir/app/.env.local"
 
 #=================================================
 # UPGRADE DEPENDENCIES
@@ -11,43 +47,16 @@ ynh_script_progression "Upgrading dependencies..."
 ynh_nodejs_install
 
 #=================================================
-# STOP SYSTEMD SERVICE
-#=================================================
-ynh_script_progression "Stopping $app's systemd service..."
-
-ynh_systemctl --service=$app --action="stop" --log_path="systemd"
-
-#=================================================
-# DOWNLOAD, CHECK AND UNPACK SOURCE
-#=================================================
-ynh_script_progression "Upgrading source files..."
-
-ynh_setup_source --dest_dir="$data_dir/app" --keep="app/.env.local app/config/users.json app/config/repo.json"
-
-chown -R $app:www-data "$data_dir/app"
-
-#=================================================
-# REAPPLY SYSTEM CONFIGURATIONS
+# REAPPLY SYSTEM CONFIGURATION
 #=================================================
 ynh_script_progression "Upgrading system configurations related to $app..."
 
 ynh_config_add_nginx
 
 ynh_config_add_systemd
+yunohost service add "$app" --description="WebUI for BorgBackup" --log="/var/log/$app/$app.log"
 
 ynh_config_add --template="cron" --destination="/etc/cron.d/$app"
-
-yunohost service add $app --description="WebUI for BorgBackup" --log="/var/log/$app/$app.log"
-
-#=================================================
-# UPDATE A CONFIG FILE
-#=================================================
-ynh_script_progression "Updating configuration..."
-
-ynh_config_add --template=".env" --destination="$data_dir/app/.env.local"
-
-chmod 400 "$data_dir/app/.env.local"
-chown $app:$app "$data_dir/app/.env.local"
 
 #=================================================
 # INSTALL BORGWARHOUSE
@@ -63,7 +72,7 @@ popd
 #=================================================
 ynh_script_progression "Starting $app's systemd service..."
 
-ynh_systemctl --service=$app --action="start" --log_path="systemd"
+ynh_systemctl --service="$app" --action="start" --log_path="systemd"
 
 #=================================================
 # END OF SCRIPT
