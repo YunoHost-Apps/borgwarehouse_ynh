@@ -1,31 +1,28 @@
 #!/bin/bash
 
+#=================================================
+# IMPORT GENERIC HELPERS
+#=================================================
+
 source _common.sh
 source /usr/share/yunohost/helpers
+
+#=================================================
+# INITIALIZE AND STORE SETTINGS
+#=================================================
 
 secret=$(ynh_string_random --length=32)
 cron_key=$(ynh_string_random --length=32)
 
-#=================================================
-# STORE SETTINGS FROM MANIFEST
-#=================================================
-ynh_script_progression "Storing installation settings..."
-
 ynh_app_setting_set --key=secret --value=$secret
 ynh_app_setting_set --key=cron_key --value=$cron_key
-
-#=================================================
-# INSTALL DEPENDENCIES
-#=================================================
-ynh_script_progression "Installing dependencies..."
-
-ynh_nodejs_install
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression "Setting up source files..."
 
+# Download, check integrity, uncompress and patch the source from manifest.toml
 ynh_setup_source --dest_dir="$data_dir/app"
 
 chmod 700 "$data_dir"
@@ -40,27 +37,35 @@ mkdir "$data_dir/repos" && chmod 700 "$data_dir/repos"
 chown -R $app:www-data "$data_dir"
 
 #=================================================
-# SYSTEM CONFIGURATION
+# APP INITIAL CONFIGURATION
 #=================================================
-ynh_script_progression "Adding system configurations related to $app..."
-
-ynh_config_add_nginx
-
-ynh_config_add_systemd
-
-ynh_config_add --template="cron" --destination="/etc/cron.d/$app"
-
-yunohost service add $app --description="WebUI for BorgBackup" --log="/var/log/$app/$app.log"
-
-#=================================================
-# ADD A CONFIGURATION
-#=================================================
-ynh_script_progression "Adding $app's configuration..."
+ynh_script_progression "Adding $app's configuration files..."
 
 ynh_config_add --template=".env" --destination="$data_dir/app/.env.local"
 
 chmod 400 "$data_dir/app/.env.local"
 chown $app:$app "$data_dir/app/.env.local"
+
+#=================================================
+# INSTALL DEPENDENCIES
+#=================================================
+ynh_script_progression "Installing dependencies..."
+
+ynh_nodejs_install
+
+#=================================================
+# SYSTEM CONFIGURATION
+#=================================================
+ynh_script_progression "Adding system configurations related to $app..."
+
+# Create a dedicated NGINX config using the conf/nginx.conf template
+ynh_config_add_nginx
+
+# Create a dedicated systemd config
+ynh_config_add_systemd
+yunohost service add "$app" --description="WebUI for BorgBackup" --log="/var/log/$app/$app.log"
+
+ynh_config_add --template="cron" --destination="/etc/cron.d/$app"
 
 #=================================================
 # INSTALL BORGWARHOUSE
@@ -77,9 +82,11 @@ popd
 #=================================================
 ynh_script_progression "Starting $app's systemd service..."
 
-ynh_systemctl --service=$app --action="start" --log_path="systemd"
+# Start a systemd service
+ynh_systemctl --service="$app" --action="start" --log_path="systemd"
 
 #=================================================
 # END OF SCRIPT
 #=================================================
+
 ynh_script_progression "Installation of $app completed"
