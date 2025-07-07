@@ -4,7 +4,7 @@
 # COMMON VARIABLES AND CUSTOM HELPERS
 #=================================================
 
-nodejs_version="20"
+nodejs_version="22"
 ssh_port=$(grep -P "Port\s+\d+" /etc/ssh/sshd_config | grep -P -o "\d+")
 main_domain=$(cat /etc/yunohost/current_host)
 
