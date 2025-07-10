@@ -8,11 +8,6 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# ENSURE DOWNWARD COMPATIBILITY
-#=================================================
-ynh_script_progression "Ensuring downward compatibility..."
-
-#=================================================
 # STOP SYSTEMD SERVICE
 #=================================================
 ynh_script_progression "Stopping $app's systemd service..."
@@ -32,9 +27,11 @@ ynh_nodejs_install
 ynh_script_progression "Upgrading source files..."
 
 # Download, check integrity, uncompress and patch the source from manifest.toml
-ynh_setup_source --dest_dir="$data_dir/app" --keep="app/.env.local app/config/users.json app/config/repo.json"
+ynh_setup_source --dest_dir="$data_dir/app" --keep=".ssh/authorized_keys app/.env.local app/config"
 
-chown -R $app:www-data "$data_dir/app"
+chmod 700 -R "$data_dir"
+touch "$data_dir/.ssh/authorized_keys" && chmod 600 "$data_dir/.ssh/authorized_keys"
+chown -R $app:$app "$data_dir"
 
 #=================================================
 # UPDATE A CONFIG FILE
@@ -58,6 +55,7 @@ ynh_config_add --template="cron" --destination="/etc/cron.d/$app"
 #=================================================
 # INSTALL BORGWARHOUSE
 #=================================================
+ynh_script_progression "Installing $app..."
 
 pushd $data_dir/app
 	ynh_hide_warnings ynh_exec_as_app npm ci
