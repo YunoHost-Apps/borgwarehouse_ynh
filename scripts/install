@@ -32,9 +32,13 @@ ynh_script_progression "Setting up source files..."
 # Download, check integrity, uncompress and patch the source from manifest.toml
 ynh_setup_source --dest_dir="$install_dir/app"
 
+chmod 700 $install_dir
+
 mkdir $install_dir/.ssh && chmod 700 $install_dir/.ssh
 touch $install_dir/.ssh/authorized_keys && chmod 600 $install_dir/.ssh/authorized_keys
 mkdir $install_dir/repos && chmod 700 $install_dir/repos
+
+chown -R $app: "$data_dir"
 
 #=================================================
 # APP INITIAL CONFIGURATION
