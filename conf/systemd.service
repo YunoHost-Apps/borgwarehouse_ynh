@@ -1,5 +1,5 @@
 [Unit]
-Description=BorgWarehouse
+Description=BorgWarehouse: WebUI for BorgBackup
 Documentation=https://borgwarehouse.com
 After=network.target
 
