@@ -1,1 +1,1 @@
-10 * * * * root curl --request POST --url 'http://127.0.0.1:__PORT__/api/v1/cron/status' --header 'Authorization: Bearer __CRON_KEY__' ; curl --request POST --url 'http://127.0.0.1:__PORT__/api/v1/cron/storage' --header 'Authorization: Bearer __CRON_KEY__'
+10 * * * * __APP__ curl --request POST --url 'http://127.0.0.1:__PORT__/api/v1/cron/status' --header 'Authorization: Bearer __CRON_KEY__' ; curl --request POST --url 'http://127.0.0.1:__PORT__/api/v1/cron/storage' --header 'Authorization: Bearer __CRON_KEY__'
