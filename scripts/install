@@ -33,9 +33,8 @@ ynh_script_progression "Setting up source files..."
 ynh_setup_source --dest_dir="$data_dir/app"
 
 chmod 700 -R "$data_dir"
-chmod 700 "$data_dir/.ssh"
 touch "$data_dir/.ssh/authorized_keys" && chmod 600 "$data_dir/.ssh/authorized_keys"
-chown -R $app: "$data_dir"
+chown -R $app:$app "$data_dir"
 
 #=================================================
 # APP INITIAL CONFIGURATION
