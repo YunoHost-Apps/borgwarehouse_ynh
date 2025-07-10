@@ -41,7 +41,7 @@ chmod 700 "$data_dir/app/helpers/shells/"*
 
 mkdir "$data_dir/repos" && chmod 700 "$data_dir/repos"
 
-chown -R $app:www-data "$data_dir"
+#chown -R $app:www-data "$data_dir"
 
 #=================================================
 # APP INITIAL CONFIGURATION
