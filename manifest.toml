@@ -54,6 +54,7 @@ ram.runtime = "50M"
     home = "/home/yunohost.app/__APP__"
 
     [resources.data_dir]
+    subdirs = [".ssh", "repos"]
 
     [resources.permissions]
     main.url = "/"

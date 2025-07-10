@@ -32,15 +32,9 @@ ynh_script_progression "Setting up source files..."
 # Download, check integrity, uncompress and patch the source from manifest.toml
 ynh_setup_source --dest_dir="$data_dir/app"
 
-chmod 700 "$data_dir"
-
-mkdir "$data_dir/.ssh" && chmod 700 "$data_dir/.ssh"
+chmod 700 -R "$data_dir"
+chmod 700 "$data_dir/.ssh"
 touch "$data_dir/.ssh/authorized_keys" && chmod 600 "$data_dir/.ssh/authorized_keys"
-
-chmod 700 "$data_dir/app/helpers/shells/"*
-
-mkdir "$data_dir/repos" && chmod 700 "$data_dir/repos"
-
 chown -R $app: "$data_dir"
 
 #=================================================
