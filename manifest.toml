@@ -53,8 +53,6 @@ ram.runtime = "50M"
     allow_ssh = true
     home = "/home/yunohost.app/__APP__"
 
-    [resources.install_dir]
-
     [resources.data_dir]
 
     [resources.permissions]
