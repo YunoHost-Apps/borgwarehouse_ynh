@@ -14,7 +14,7 @@ ynh_print_info "Declaring files to be backed up..."
 # BACKUP THE APP MAIN DIR
 #=================================================
 
-ynh_backup "$data_dir"
+ynh_backup "$install_dir"
 
 #=================================================
 # BACKUP SYSTEM CONFIGURATION

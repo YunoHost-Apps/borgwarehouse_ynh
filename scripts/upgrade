@@ -32,16 +32,14 @@ ynh_nodejs_install
 ynh_script_progression "Upgrading source files..."
 
 # Download, check integrity, uncompress and patch the source from manifest.toml
-ynh_setup_source --dest_dir="$data_dir/app" --keep="app/.env.local app/config/users.json app/config/repo.json"
-
-chown -R $app:www-data "$data_dir/app"
+ynh_setup_source --dest_dir="$install_dir/app" --keep="app/.env.local app/config/users.json app/config/repo.json"
 
 #=================================================
 # UPDATE A CONFIG FILE
 #=================================================
 ynh_script_progression "Updating $app's configuration files..."
 
-ynh_config_add --template=".env" --destination="$data_dir/app/.env.local"
+ynh_config_add --template=".env" --destination="$install_dir/app/.env.local"
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATION
@@ -59,7 +57,7 @@ ynh_config_add --template="cron" --destination="/etc/cron.d/$app"
 # INSTALL BORGWARHOUSE
 #=================================================
 
-pushd $data_dir/app
+pushd $install_dir/app
 	ynh_hide_warnings ynh_exec_as_app npm ci
 	ynh_hide_warnings ynh_exec_as_app NODE_ENV=production npm run build
 popd
