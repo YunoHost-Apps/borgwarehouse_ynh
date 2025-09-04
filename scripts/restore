@@ -9,13 +9,6 @@ source ../settings/scripts/_common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# REINSTALL DEPENDENCIES
-#=================================================
-ynh_script_progression "Reinstalling dependencies..."
-
-#REMOVEME? ynh_nodejs_install
-
-#=================================================
 # RESTORE THE DATA DIRECTORY
 #=================================================
 ynh_script_progression "Restoring the data directory..."
