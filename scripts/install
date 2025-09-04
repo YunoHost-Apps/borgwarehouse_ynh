@@ -18,13 +18,6 @@ ynh_app_setting_set --key=secret --value=$secret
 ynh_app_setting_set --key=cron_key --value=$cron_key
 
 #=================================================
-# INSTALL DEPENDENCIES
-#=================================================
-ynh_script_progression "Installing dependencies..."
-
-ynh_nodejs_install
-
-#=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression "Setting up source files..."
