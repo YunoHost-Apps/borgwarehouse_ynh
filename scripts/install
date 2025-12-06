@@ -57,7 +57,7 @@ ynh_script_progression "Installing $app..."
 
 pushd $data_dir/app
 	ynh_hide_warnings ynh_exec_as_app npm ci
-	ynh_hide_warnings ynh_exec_as_app NODE_ENV=production npm run build
+	ynh_hide_warnings ynh_exec_as_app NODE_ENV=production NEXT_DISABLE_ESLINT=1 npm run build
 popd
 
 #=================================================
