@@ -51,13 +51,20 @@ yunohost service add "$app" --description="WebUI for BorgBackup" --log="/var/log
 ynh_config_add --template="cron" --destination="/etc/cron.d/$app"
 
 #=================================================
+# INSTALL DEPENDENCIES
+#=================================================
+ynh_script_progression "Installing dependencies..."
+
+ynh_hide_warnings corepack enable && corepack prepare pnpm@latest --activate
+
+#=================================================
 # INSTALL BORGWARHOUSE
 #=================================================
 ynh_script_progression "Installing $app..."
 
 pushd $data_dir/app
-	ynh_hide_warnings ynh_exec_as_app npm ci
-	ynh_hide_warnings ynh_exec_as_app NODE_ENV=production NEXT_DISABLE_ESLINT=1 npm run build
+	ynh_hide_warnings ynh_exec_as_app pnpm install --frozen-lockfile --prod
+	ynh_hide_warnings ynh_exec_as_app pnpm run build
 popd
 
 #=================================================
