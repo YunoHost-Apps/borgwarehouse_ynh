@@ -69,4 +69,4 @@ ram.runtime = "50M"
     packages = "jc, jq, borgbackup, apprise"
 
     [resources.nodejs]
-    version = "22"
+    version = "24"
